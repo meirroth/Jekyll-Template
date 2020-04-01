@@ -1,0 +1,22 @@
+<header>
+  <div class="container">
+    <nav>
+      {% assign linkhome = '/' %}
+      {% if page.permalink == linkhome %}
+      {% assign linkhome = '#' %}
+      {% endif %}
+      <a href="{{ linkhome }}" class="logo"><img src="{{ site.baseurl }}/img/logo.png" alt="{{ site.title }} logo" height="36px">{{ site.title }}</a>
+      <menu>
+        <ul>  <!-- site menu links -->
+          {%- for link in site.navigation -%}
+          {% assign url = link.url %}
+          {% if page.url contains link.url %}
+          {% assign url = '#' %}
+          {% endif %}
+          <li><a href="{{ url | prepend: site.baseurl }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </menu>
+    </nav>
+  </div>
+</header>

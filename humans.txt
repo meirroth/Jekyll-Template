@@ -1,0 +1,15 @@
+# humanstxt.org/
+/* TEAM */
+Your title: Meir Roth.
+Site: https://meirroth.net
+Twitter: meir_roth
+Location: Israel
+
+/* THANKS */
+Everyone in the open-source world!
+
+/* SITE */
+Last update:
+Standards: HTML5, CSS3
+Components: Jekyll, jQuery, modern-normalize.css, font-awesome.css
+Software: Atom, GitHub
