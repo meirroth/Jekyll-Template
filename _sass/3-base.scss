@@ -10,11 +10,26 @@ main {
   min-height: calc(100% - 166px);
 }
 .container {
+  padding: 0 1em;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 800px;
+}
+section{
+  padding: 1em 0;
 }
 footer, section {
   overflow: hidden;
+}
+footer {
+  font-size: .8rem;
+  padding: 2em 0;
+  border-top: 2px solid rgba(255,255,255,0.5);
+  .copyright{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 a {
   color: inherit;
@@ -27,21 +42,26 @@ header {
   background-color: rgba(255, 255, 255, 0.5);
 }
 nav {
-  padding: 10px;
+  font-size: .8rem;
+  padding: 1em 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   a.logo {
     font-size: 0;
     img {
-      height: 36px;
+      height: 1.4rem;
     }
   }
   menu {
     ul {
+      display: flex;
+      justify-content: space-around;
       li{
-        display: inline;
         list-style: none;
+        a {
+          margin: .4em .6em;
+        }
       }
     }
   }

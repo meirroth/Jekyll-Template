@@ -1,11 +1,9 @@
 <header>
   <div class="container">
     <nav>
-      {% assign linkhome = '/' %}
-      {% if page.permalink == linkhome %}
-      {% assign linkhome = '#' %}
-      {% endif %}
-      <a href="{{ linkhome }}" class="logo"><img src="{{ site.baseurl }}/img/logo.png" alt="{{ site.title }} logo" height="36px">{{ site.title }}</a>
+      {% capture linkhome %}{{ site.baseurl }}/{% endcapture %}
+      {% if page.permalink == '/' %}{% assign linkhome = '#' %}{% endif %}
+      <a href="{{ linkhome }}" class="logo"><img src="{{ '/img/logo.png' | prepend: site.baseurl }}" alt="{{ site.title }} logo" height="36px">{{ site.title }}</a>
       <menu>
         <ul>  <!-- site menu links -->
           {%- for link in site.navigation -%}
