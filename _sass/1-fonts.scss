@@ -1,0 +1,64 @@
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+$min_width: 320px;
+$max_width: 800px;
+$min_font: 18px;
+$max_font: 22px;
+html {
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+}
+.h1, h1 {
+  font-size: 2.5em;
+}
+.h2, h2 {
+  font-size: 2em;
+}
+.h3, h3 {
+  font-size: 1.75em;
+}
+.h4, h4 {
+  font-size: 1.5em;
+}
+.h5, h5 {
+  font-size: 1.25em;
+}
+.h6, h6 {
+  font-size: 1em;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  margin-bottom: .5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  color: inherit;
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+p {
+  margin-top: 0;
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
