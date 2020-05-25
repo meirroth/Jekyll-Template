@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: "en" }}" dir="{{ page.direction | default: site.direction | default: "ltr" }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,39 +8,15 @@
   <meta name="keywords" content="{{ site.keywords }}">
   <meta name="author" content="{{ site.author }}">
   <link rel="author" href="{{ site.baseurl }}/humans.txt">
-  {%- if site.seo -%}
-    <meta property="og:type" content="{{ site.seo.og.type | default: "website" }}">
-    <meta property="og:site_name" content="{{ site.title }}">
-    <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-    <meta property="og:title" content="{{ page.title | default: site.title }}">
-    <meta property="og:description" content="{{ site.description }}">
-    {%- if site.seo.og.image -%}
-    <meta property="og:image" content="{{ site.baseurl }}/{{ site.seo.og.image }}">
-    <meta name="twitter:image" content="{{ site.baseurl }}/{{ site.seo.og.image }}">
-    {%- endif -%}
-    <meta name="twitter:card" content="{{ site.seo.twitter.card | default: "summary" }}">
-    {%- if site.seo.twitter.username -%}
-    <meta name="twitter:creator" content="@{{ site.seo.twitter.username | remove:'@' }}">
-    {%- endif -%}
-    <meta name="twitter:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-    <meta name="twitter:title" content="{{ page.title | default: site.title }}">
-    <meta name="twitter:description" content="{{ site.description }}">
-  {%- endif -%}
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/fontawesome-5.13.0-all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="{{ site.baseurl }}/assets/css/fontawesome-5.13.0-all.min.css"></noscript>
   {%- for css_link in page.css_link -%}
   <link rel="stylesheet" href="{{ css_link }}">
   {%- endfor -%}
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/img/favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/img/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/img/favicons/favicon-16x16.png">
-  <link rel="manifest" href="{{ site.baseurl }}/img/favicons/site.webmanifest">
   {%- if site.environment == 'production' -%}
-  <link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url }}"/>
-  {%- if site.google-tracking-id -%}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google-tracking-id }}"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '{{ site.google-tracking-id }}');</script>
-  {%- endif -%}
+  {%- include seo.html -%}
   {%- endif -%}
 </head>
 <body {% if page.bodyId %}id="{{ page.bodyId }}"{% endif %}>

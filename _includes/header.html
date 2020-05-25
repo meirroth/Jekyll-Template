@@ -3,7 +3,7 @@
     <nav>
       {% capture linkhome %}{{ site.baseurl }}/{% endcapture %}
       {% if page.permalink == '/' %}{% assign linkhome = '#' %}{% endif %}
-      <a href="{{ linkhome }}" class="logo"><img src="{{ '/img/logo.png' | prepend: site.baseurl }}" alt="{{ site.title }} logo" height="36px">{{ site.title }}</a>
+      <a href="{{ linkhome }}" class="logo"><img src="{{ '/assets/img/jekyll-template-logo.svg' | prepend: site.baseurl }}" alt="{{ site.title }} logo" height="36px">{{ site.title }}</a>
       <menu>
         <ul>  <!-- site menu links -->
           {%- for link in site.navigation -%}

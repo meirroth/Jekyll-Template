@@ -10,6 +10,7 @@ baseurl:  # the subpath of your site, e.g. /blog
 permalink: pretty
 environment: development
 google-tracking-id: # Google Tracking ID and property number
+theme-color:
 seo: # seo meta tags  (https://favicon.io/)
   og:
     type: # The type of the website. default is 'website'
