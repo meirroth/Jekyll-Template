@@ -1,5 +1,7 @@
-# <img src="assets/img/jekyll-template-logo.svg" alt="Jekyll-Template" title="Jekyll-Template" width="260">
-
+<p align="center">
+  <h2 align="center"><pre>Work in progress</pre></h2>
+  <img src="assets/img/jekyll-template-logo.svg" alt="Jekyll-Template" title="Jekyll-Template" width="260" align="center">
+</p>
 
 Quick and easy template to get your Jekyll site up and running.
 
@@ -12,11 +14,13 @@ See a live demo [here](https://meirroth.github.io/Jekyll-Template/).
   - linking/embedding JavaScript files stored locally or from a CDN
 
 ### Installation
-Dev
+#### Dev
+Open Live preview with LiveReload
 ```
 bundle exec jekyll serve -l -o
 ```
-Deploy
+#### Deploy
+Export website to `_site/` folder
 ```
 bundle clean
 bundle exec jekyll build
