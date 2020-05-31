@@ -1,5 +1,5 @@
-<img alt="Jekyll-Template" src="https://meirroth.github.io/Jekyll-Template/assets/img/jekyll-template-logo.svg" width="200">
----
+# <img src="assets/img/jekyll-template-logo.svg" alt="Jekyll-Template" title="Jekyll-Template" width="260">
+
 
 Quick and easy template to get your Jekyll site up and running.
 
