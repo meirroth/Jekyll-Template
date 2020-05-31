@@ -1,17 +1,28 @@
-{%- if page.jquery -%}
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/core/jquery-3.4.1.min.js"><\/script>')</script>
-{%- endif -%}
-{%- for js_link_ex in page.js_link_ex -%}
-<script src="{{ js_link_ex }}"></script>
+{% for file in page.js %}
+  {%- if file.jquery -%}
+    <script src="//code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/core/jquery-3.4.1.min.js"><\/script>')</script>
+  {%- elsif file.link and file.link != "" and file.link != nil -%}
+    {%- if file.link contains ".js" -%}
+      {%- if file.link contains "//" -%}
+        {%- if site.environment == 'production' -%}
+          <script src="{{ file.link }}" {%- if file.integrity and file.integrity != "" -%}integrity="{{ file.integrity }}" crossorigin="anonymous" {%- endif -%} charset="UTF-8"></script>
+        {%- else -%}
+          <script src="{{ file.link }}" charset="UTF-8"></script>
+        {%- endif -%}
+      {%- else -%}
+        <script src="{{ site.baseurl }}/assets/js/{{ file.link }}" charset="UTF-8"></script>
+      {%- endif -%}
+    {%- else -%}
+      <script type="text/javascript">
+        {% include js/{{ file.link }}.js %}
+      </script>
+    {%- endif -%}
+  {%- endif -%}
 {%- endfor -%}
-{%- for js_link in page.js_link -%}
-<script src="{{ site.baseurl }}/assets/js/{{ js_link }}.js"></script>
-{%- endfor -%}
-{%- if page.custom_js -%}
-{%- for js_file in page.custom_js -%}
-<script type="text/javascript">
-  {% include js/{{ js_file }}.js %}
+{%- if site.environment == 'production' and site.google-tracking-id  -%}
+<!-- google analytics https://minimalanalytics.com/ -->
+<script>
+  var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.createTemplateTagFirstArg=function(a){return a.raw=a};$jscomp.createTemplateTagFirstArgWithRaw=function(a,k){a.raw=k;return a};(function(a,k,c){var d=a.history,f=document,l=navigator||{},m=localStorage,p=encodeURIComponent,n=d.pushState,g=function(b,h,d,g,n,t,q){var r=c.anonymizeIp?1:void 0;m.cid||(m.cid=Math.random().toString(36));b={v:"1",ds:"web",aip:r,tid:k,cid:m.cid,t:b||"pageview",sd:c.colorDepth&&screen.colorDepth?screen.colorDepth+"-bits":void 0,dr:f.referrer||void 0,dt:f.title,dl:f.location.origin+f.location.pathname+f.location.search,ul:c.language?(l.language||"").toLowerCase():void 0,de:c.characterSet?f.characterSet:void 0,sr:c.screenSize?(a.screen||{}).width+"x"+(a.screen||{}).height:void 0,vp:c.screenSize&&a.visualViewport?(a.visualViewport||{}).width+"x"+(a.visualViewport||{}).height:void 0,ec:h||void 0,ea:d||void 0,el:g||void 0,ev:n||void 0,exd:t||void 0,exf:"undefined"!==typeof q&&!1===!!q?0:void 0};h=[];for(e in b)b.hasOwnProperty(e)&&void 0!==b[e]&&h.push(p(e)+"="+p(b[e]));var e=h.join("&");l.sendBeacon?l.sendBeacon("https://www.google-analytics.com/collect",e):(b=new XMLHttpRequest,b.open("POST","https://www.google-analytics.com/collect",!0),b.send(e))};d.pushState=function(b){if("function"==typeof d.onpushstate)d.onpushstate({state:b});setTimeout(g,c.delay||10);return n.apply(d,arguments)};g();a.ma={trackEvent:function(b,a,c,d){return g("event",b,a,c,d)},trackException:function(a,c){return g("exception",null,null,null,null,a,c)}}})(window,"{{ site.google-tracking-id }}",{anonymizeIp:!0,colorDepth:!0,characterSet:!0,screenSize:!0,language:!0});
 </script>
-{%- endfor -%}
 {%- endif -%}
