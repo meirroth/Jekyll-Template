@@ -20,7 +20,7 @@
   {%- include seo.html -%}
   {%- endif -%}
 </head>
-<body {% if page.bodyId %}id="{{ page.bodyId }}"{% endif %}>
+<body {% if page.bodyId and page.bodyId != "" and page.bodyId != nil %}id="{{ page.bodyId }}"{% endif %}{% if page.bodyClass and page.bodyClass != "" and page.bodyClass != nil %}class="{{ page.bodyClass }}"{% endif %}>
   <!--[if IE]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p><![endif]-->
   {% include header.html %}
   {{ content }}
