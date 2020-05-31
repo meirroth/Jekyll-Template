@@ -1,5 +1,5 @@
 <p align="center">
-  <h2 align="center"><pre>Work in progress</pre></h2>
+  <h3 align="center"><pre>Work in progress</pre></h3>
   <img src="assets/img/jekyll-template-logo.svg" alt="Jekyll-Template" title="Jekyll-Template" width="260" align="center">
 </p>
 
