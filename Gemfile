@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.0.0"
-gem 'jekyll-autoprefixer'
+gem "jekyll-autoprefixer"
 install_if -> { RUBY_PLATFORM =~ %r!mingw|mswin|java! } do
   gem "tzinfo", "~> 1.2"
   gem "tzinfo-data"

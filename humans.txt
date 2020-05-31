@@ -1,12 +1,10 @@
 # humanstxt.org/
 /* TEAM */
-Your title: Meir Roth.
-Site: https://meirroth.net
-Twitter: meir_roth
-Location: Israel
+Your title:
+Site:
 
 /* THANKS */
-Everyone in the open-source world!
+Everyone in the open-source community!
 
 /* SITE */
 Last update:

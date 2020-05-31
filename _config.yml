@@ -1,8 +1,8 @@
 lang: en
 
-title: Your awesome title
+title: Jekyll-Template
 description: >-
-  Write an awesome description for your new site here.
+  Quick and easy template to get your Jekyll site up and running.
 keywords: ""
 author: "Meir Roth"
 url:  # the base hostname & protocol for your site, e.g. http://example.com
@@ -10,6 +10,7 @@ baseurl:  # the subpath of your site, e.g. /blog
 permalink: pretty
 environment: development
 google-tracking-id: # Google Tracking ID and property number
+theme-color:
 seo: # seo meta tags  (https://favicon.io/)
   og:
     type: # The type of the website. default is 'website'
